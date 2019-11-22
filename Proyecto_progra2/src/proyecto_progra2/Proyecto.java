@@ -5,7 +5,18 @@
  */
 package proyecto_progra2;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.security.auth.callback.ConfirmationCallback;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,8 +28,11 @@ public class Proyecto extends javax.swing.JFrame {
     /**
      * Creates new form Proyecto
      */
-    public Proyecto() {
+    public Proyecto() throws FileNotFoundException {
+        
         initComponents();
+        //CargarUsuarios();
+        
     }
 
     /**
@@ -30,14 +44,392 @@ public class Proyecto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_addusuario = new javax.swing.JDialog();
+        bt_ingresarusu = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        tf_crearid = new javax.swing.JFormattedTextField();
+        tf_crearusu = new javax.swing.JTextField();
+        tf_crearcontra = new javax.swing.JTextField();
+        cb_creartipo = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jd_mod_usuarios = new javax.swing.JDialog();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        tf_modnombre = new javax.swing.JTextField();
+        tf_modcontra = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        cb_mod_usu = new javax.swing.JComboBox<>();
+        bt_modificar = new javax.swing.JToggleButton();
+        tf_mod_id = new javax.swing.JFormattedTextField();
+        cb_modtipo = new javax.swing.JComboBox<>();
+        jd_magistrados = new javax.swing.JDialog();
+        jd_miembrosdemesa = new javax.swing.JDialog();
+        jf_administradores = new javax.swing.JFrame();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        op_usuarios = new javax.swing.JMenu();
+        mi_ing_usu = new javax.swing.JMenuItem();
+        mi_mod_usu = new javax.swing.JMenuItem();
+        mi_elim_usu = new javax.swing.JMenuItem();
+        op_papeletas = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        op_magistrados = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        op_infomesas = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        op_miembrosmesas = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        op_electores = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        op_pdf = new javax.swing.JMenu();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tf_id = new javax.swing.JTextField();
         tf_pass = new javax.swing.JPasswordField();
         bt_login = new javax.swing.JButton();
+        tf_id = new javax.swing.JFormattedTextField();
+
+        bt_ingresarusu.setText("Ingresar Usuario");
+        bt_ingresarusu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_ingresarusuMouseClicked(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel3.setText("Nombre: ");
+
+        jLabel5.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel5.setText("ID: ");
+
+        jLabel7.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel7.setText("Contrasena: ");
+
+        jLabel8.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel8.setText("Tipo : ");
+
+        try {
+            tf_crearid.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####-#####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        cb_creartipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Magistrado", "Miembro de mesa", "Elector", " " }));
+
+        jLabel6.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
+        jLabel6.setText("Crear un Nuevo Usuario");
+
+        javax.swing.GroupLayout jd_addusuarioLayout = new javax.swing.GroupLayout(jd_addusuario.getContentPane());
+        jd_addusuario.getContentPane().setLayout(jd_addusuarioLayout);
+        jd_addusuarioLayout.setHorizontalGroup(
+            jd_addusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_addusuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_addusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_addusuarioLayout.createSequentialGroup()
+                        .addGroup(jd_addusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jd_addusuarioLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_crearid))
+                            .addGroup(jd_addusuarioLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_creartipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_addusuarioLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_crearcontra))
+                            .addGroup(jd_addusuarioLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_crearusu, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_addusuarioLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bt_ingresarusu)
+                        .addGap(76, 76, 76))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_addusuarioLayout.createSequentialGroup()
+                .addContainerGap(116, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(100, 100, 100))
+        );
+        jd_addusuarioLayout.setVerticalGroup(
+            jd_addusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_addusuarioLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(jd_addusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tf_crearusu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jd_addusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(tf_crearid, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_addusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(tf_crearcontra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jd_addusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cb_creartipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(bt_ingresarusu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+        );
+
+        jLabel9.setText("Nombre: ");
+
+        jLabel10.setText("ID:");
+
+        jLabel11.setText("Contrasena:");
+
+        jLabel12.setText("Roll");
+
+        jTextField4.setText("jTextField4");
+
+        cb_mod_usu.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_mod_usuItemStateChanged(evt);
+            }
+        });
+
+        bt_modificar.setText("Modificar");
+        bt_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_modificarMouseClicked(evt);
+            }
+        });
+
+        try {
+            tf_mod_id.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####-#####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        cb_modtipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Magistrado", "Miembro de mesa", "Elector" }));
+        cb_modtipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_modtipoItemStateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_mod_usuariosLayout = new javax.swing.GroupLayout(jd_mod_usuarios.getContentPane());
+        jd_mod_usuarios.getContentPane().setLayout(jd_mod_usuariosLayout);
+        jd_mod_usuariosLayout.setHorizontalGroup(
+            jd_mod_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_mod_usuariosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jd_mod_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_mod_usuariosLayout.createSequentialGroup()
+                        .addComponent(bt_modificar)
+                        .addGap(83, 83, 83))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_mod_usuariosLayout.createSequentialGroup()
+                        .addComponent(cb_mod_usu, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53))))
+            .addGroup(jd_mod_usuariosLayout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(jd_mod_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel12))
+                .addGap(35, 35, 35)
+                .addGroup(jd_mod_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_mod_usuariosLayout.createSequentialGroup()
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_modtipo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_mod_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tf_modnombre)
+                        .addComponent(tf_modcontra)
+                        .addComponent(tf_mod_id, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)))
+                .addContainerGap(253, Short.MAX_VALUE))
+        );
+        jd_mod_usuariosLayout.setVerticalGroup(
+            jd_mod_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_mod_usuariosLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(cb_mod_usu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_mod_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(tf_modnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jd_mod_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(tf_mod_id, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jd_mod_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(tf_modcontra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jd_mod_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_modtipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(bt_modificar)
+                .addGap(66, 66, 66))
+        );
+
+        javax.swing.GroupLayout jd_magistradosLayout = new javax.swing.GroupLayout(jd_magistrados.getContentPane());
+        jd_magistrados.getContentPane().setLayout(jd_magistradosLayout);
+        jd_magistradosLayout.setHorizontalGroup(
+            jd_magistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_magistradosLayout.setVerticalGroup(
+            jd_magistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_miembrosdemesaLayout = new javax.swing.GroupLayout(jd_miembrosdemesa.getContentPane());
+        jd_miembrosdemesa.getContentPane().setLayout(jd_miembrosdemesaLayout);
+        jd_miembrosdemesaLayout.setHorizontalGroup(
+            jd_miembrosdemesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_miembrosdemesaLayout.setVerticalGroup(
+            jd_miembrosdemesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        op_usuarios.setText("Opciones Usuarios");
+
+        mi_ing_usu.setText("Ingresar Usuarios");
+        mi_ing_usu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_ing_usuActionPerformed(evt);
+            }
+        });
+        op_usuarios.add(mi_ing_usu);
+
+        mi_mod_usu.setText("Modificar Usuarios");
+        mi_mod_usu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_mod_usuActionPerformed(evt);
+            }
+        });
+        op_usuarios.add(mi_mod_usu);
+
+        mi_elim_usu.setText("Eliminar Usuarios");
+        op_usuarios.add(mi_elim_usu);
+
+        jMenuBar1.add(op_usuarios);
+
+        op_papeletas.setText("Papeletas ");
+
+        jMenuItem1.setText("Papeleta Presidente");
+        op_papeletas.add(jMenuItem1);
+
+        jMenuItem2.setText("Papeletas Diputados");
+        op_papeletas.add(jMenuItem2);
+
+        jMenuItem3.setText("Papeletas Alcaldes");
+        op_papeletas.add(jMenuItem3);
+
+        jMenuBar1.add(op_papeletas);
+
+        op_magistrados.setText("Opciones Magistrados");
+
+        jMenuItem4.setText("Ingresar Magistrados");
+        op_magistrados.add(jMenuItem4);
+
+        jMenuItem5.setText("Modificar Magistrados");
+        op_magistrados.add(jMenuItem5);
+
+        jMenuItem6.setText("Eliminar Magistrados");
+        op_magistrados.add(jMenuItem6);
+
+        jMenuBar1.add(op_magistrados);
+
+        op_infomesas.setText("Opciones Informacion mesas");
+
+        jMenuItem7.setText("Ingresar info de mesa");
+        op_infomesas.add(jMenuItem7);
+
+        jMenuItem8.setText("Modificar info de mesa");
+        op_infomesas.add(jMenuItem8);
+
+        jMenuItem9.setText("Eliminar info de mesa");
+        op_infomesas.add(jMenuItem9);
+
+        jMenuBar1.add(op_infomesas);
+
+        op_miembrosmesas.setText("Opciones miembros de mesa");
+
+        jMenuItem10.setText("sdf");
+        op_miembrosmesas.add(jMenuItem10);
+
+        jMenuItem11.setText("jMenuItem1");
+        op_miembrosmesas.add(jMenuItem11);
+
+        jMenuItem12.setText("jMenuItem1");
+        op_miembrosmesas.add(jMenuItem12);
+
+        jMenuBar1.add(op_miembrosmesas);
+
+        op_electores.setText("Opciones electores");
+
+        jMenuItem13.setText("Habilitar Elector");
+        op_electores.add(jMenuItem13);
+
+        jMenuItem14.setText("Asignar Elector");
+        op_electores.add(jMenuItem14);
+
+        jMenuItem15.setText("op que??>>");
+        op_electores.add(jMenuItem15);
+
+        jMenuBar1.add(op_electores);
+
+        op_pdf.setText("PDF");
+
+        jMenuItem16.setText("jMenuItem1");
+        op_pdf.add(jMenuItem16);
+
+        jMenuItem17.setText("jMenuItem1");
+        op_pdf.add(jMenuItem17);
+
+        jMenuItem18.setText("jMenuItem1");
+        op_pdf.add(jMenuItem18);
+
+        jMenuBar1.add(op_pdf);
+
+        jf_administradores.setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout jf_administradoresLayout = new javax.swing.GroupLayout(jf_administradores.getContentPane());
+        jf_administradores.getContentPane().setLayout(jf_administradoresLayout);
+        jf_administradoresLayout.setHorizontalGroup(
+            jf_administradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 980, Short.MAX_VALUE)
+        );
+        jf_administradoresLayout.setVerticalGroup(
+            jf_administradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
         jLabel1.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabel1.setText("Login ");
@@ -55,6 +447,12 @@ public class Proyecto extends javax.swing.JFrame {
             }
         });
 
+        try {
+            tf_id.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####-#####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,17 +464,17 @@ public class Proyecto extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_id, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(bt_login, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tf_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(tf_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_id)))))
                 .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -84,17 +482,17 @@ public class Proyecto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tf_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tf_id))
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(tf_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(95, 95, 95)
                 .addComponent(bt_login, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,27 +500,211 @@ public class Proyecto extends javax.swing.JFrame {
 
     private void bt_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginMouseClicked
         try {
-             int id = Integer.parseInt(tf_id.getText());
+             String id = tf_id.getText();
              String contra = tf_pass.getText();
+             System.out.println(id+contra+"mira que si hace la accion we");
              boolean exist =false;
              for (int i = 0; i < usuarios.size(); i++) {
-                 if(id==usuarios.get(i).getId() && contra.equals(usuarios.get(i).getContrasena()) ){
+                 if(id.equals(usuarios.get(i).getId()) && contra.equals(usuarios.get(i).getContrasena()) ){
+                 user_global=usuarios.get(i);
+                     System.out.println(user_global.getId()+user_global.getContrasena());
                  exist =true;
              }
             }
-            if (!exist) {
+            if (exist==true) {
                 //open el restro dependiendo de que sea 
+                if (user_global.getTipo() instanceof Administrador) {
+                    //Proyecto v00= new Proyecto();
+                       // v00.setVisible(false);
+                    
+                    //jf_administradores.setModal(true);
+                    jf_administradores.pack();
+                    jf_administradores.setEnabled(true);
+                    jf_administradores.setVisible(true);
+                   // v00.dispose();
+                    
+                }else if(user_global.getTipo() instanceof Miembro_mesa){
+                    jd_miembrosdemesa.setModal(true);
+                    jd_miembrosdemesa.pack();
+                    jd_miembrosdemesa.setLocationRelativeTo(this);
+                    jd_miembrosdemesa.setVisible(true);
+                    
+                }else if (user_global.getTipo() instanceof Magristrados ){
+                    jd_magistrados.setModal(true);
+                    jd_magistrados.pack();
+                    jd_magistrados.setLocationRelativeTo(this);
+                    jd_magistrados.setVisible(true);
+                    
+                }else if (user_global.getTipo() instanceof Elector){
+                    jd_mod_usuarios.setModal(true);
+                    jd_mod_usuarios.pack();
+                    jd_mod_usuarios.setLocationRelativeTo(this);
+                    jd_mod_usuarios.setVisible(true);
+                }
+                
             }
-            if (exist) {
-                JOptionPane.showMessageDialog(this, "Disculpe pero ninguno de nuestros usuarios coincidieron con el suyo, vuelva a intentarlo");
+            if (exist==false) {
+               JOptionPane.showConfirmDialog(this, "No hay un usuario asi quiere ingresar uno nuevo?", "no pues si",ConfirmationCallback.YES_NO_OPTION);
+              // JOptionPane.showcon
+               // JOptionPane.showMessageDialog(this, "Disculpe pero ninguno de nuestros usuarios coincidieron con el suyo, vuelva a intentarlo");
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Ocurrio un error we");
+            e.printStackTrace();
             
         }
        
         
     }//GEN-LAST:event_bt_loginMouseClicked
 
+    private void bt_ingresarusuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_ingresarusuMouseClicked
+        try {
+            String nombre = tf_crearusu.getText();
+            String contra = tf_crearcontra.getText();
+            String id = tf_crearid.getText();
+            String roll = null;
+            switch (cb_creartipo.getSelectedIndex()){
+                case 0 :
+                    roll ="administrador";
+                    break;
+                case 1:
+                    roll= "magistrado";
+                    break;
+                case 2:
+                    roll = "miembro de mesa";
+                    break;
+                case 3:
+                    roll = "elector";
+                    break;
+            }
+            boolean exist = false;
+            
+            for (int i = 0; i < usuarios.size(); i++) {
+                if (id.equals(usuarios.get(i).getId())) {
+                    exist = true;
+                }
+            }
+            
+            if (exist== true) {
+                JOptionPane.showMessageDialog(this, "Este usuario ya existe lo sentimos intente otro ");
+            }else {
+                File file =new File("./Usuarios.txt");
+                FileWriter fw = new FileWriter(file,true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                //hay dos formas con reescribirlo y con solo respetar el dialogo
+                /*for (Usuario usuario : usuarios) {
+                
+                bw.write(usuario.getId()+";");
+                
+                }*/
+                bw.newLine();
+                bw.write(id+";");
+                bw.write(nombre+";");
+                bw.write(contra+";");
+                bw.write(roll+";");
+                bw.flush();
+                //podemos hacer este o la inicializacion primero y que u que a
+                usuarios.add(new Usuario(id, nombre, contra, roll));
+                
+                JOptionPane.showMessageDialog(this, "Se creo el usuario ");
+            }
+            tf_crearid.setText("");
+            tf_crearusu.setText("");
+            tf_crearcontra.setText("");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_bt_ingresarusuMouseClicked
+
+    private void cb_mod_usuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_mod_usuItemStateChanged
+        
+        Usuario mod = (Usuario)cb_mod_usu.getSelectedItem();
+        tf_modnombre.setText(mod.getNombre());
+        tf_modcontra.setText(mod.getContrasena());
+        tf_mod_id.setText(mod.getId());
+        
+        if (mod.getTipo() instanceof Administrador){
+            cb_modtipo.setSelectedIndex(0);
+            
+        }else if(mod.getTipo() instanceof Magristrados){
+            cb_modtipo.setSelectedIndex(1);
+        }else if (mod.getTipo() instanceof Miembro_mesa){
+             cb_modtipo.setSelectedIndex(2);
+        }else if (mod.getTipo() instanceof Elector){
+             cb_modtipo.setSelectedIndex(3);
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_cb_mod_usuItemStateChanged
+
+    private void cb_modtipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_modtipoItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_modtipoItemStateChanged
+
+    private void mi_ing_usuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_ing_usuActionPerformed
+          jd_addusuario.setModal(true);
+        jd_addusuario.pack();
+        jd_addusuario.setVisible(true);
+        jd_addusuario.setEnabled(true);
+    }//GEN-LAST:event_mi_ing_usuActionPerformed
+
+    private void mi_mod_usuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_mod_usuActionPerformed
+                                         
+
+        try {
+            cb_mod_usu.setModel(new DefaultComboBoxModel<>());
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_mod_usu.getModel();
+            for (int i = 0; i < usuarios.size(); i++) {
+                modelo.addElement(usuarios.get(i));
+            }
+            cb_mod_usu.setModel(modelo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        jd_mod_usuarios.setModal(true);
+        jd_mod_usuarios.pack();
+        jd_mod_usuarios.setVisible(true);
+        jd_mod_usuarios.setEnabled(true);
+    }//GEN-LAST:event_mi_mod_usuActionPerformed
+
+    private void bt_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_modificarMouseClicked
+        String nombre = tf_modnombre.getText()
+        
+    }//GEN-LAST:event_bt_modificarMouseClicked
+
+    public static  void CargarUsuarios() throws FileNotFoundException{
+        try {
+            File file =new File("./Usuarios.txt");
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+           // Scanner sc = new Scanner(file);
+            String linea="";
+            System.out.println("estoy aqui antes del while");
+            //de que forma metemos los usuarios?? well opino que sea tipo "id;nombre;contra;tipo
+            while ((linea = br.readLine()) != null){
+                System.out.println("Linea "+linea);
+                //aqui parsearemos las lineas del texto y lasharemos los atributos del usuario y lo haremos un usuario y lo agregaremos
+                 String[] datos = linea.split(";");
+                 System.out.println(datos.length);
+                 for (int i = 0; i < datos.length; i++) {
+                    System.out.println(datos[i]);
+                }
+                 Usuario usuario = new Usuario(datos[0],datos[1],datos[2], datos[3]);
+                 usuarios.add(usuario);
+            }
+        } catch (Exception e) {
+        }
+       
+    }
+    
+    public void meterUsuario(){
+        
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -153,21 +735,82 @@ public class Proyecto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Proyecto().setVisible(true);
+                try {
+                    new Proyecto().setVisible(true);
+                    CargarUsuarios();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Proyecto.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_ingresarusu;
     private javax.swing.JButton bt_login;
+    private javax.swing.JToggleButton bt_modificar;
+    private javax.swing.JComboBox<String> cb_creartipo;
+    private javax.swing.JComboBox<String> cb_mod_usu;
+    private javax.swing.JComboBox<String> cb_modtipo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField tf_id;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JDialog jd_addusuario;
+    private javax.swing.JDialog jd_magistrados;
+    private javax.swing.JDialog jd_miembrosdemesa;
+    private javax.swing.JDialog jd_mod_usuarios;
+    private javax.swing.JFrame jf_administradores;
+    private javax.swing.JMenuItem mi_elim_usu;
+    private javax.swing.JMenuItem mi_ing_usu;
+    private javax.swing.JMenuItem mi_mod_usu;
+    private javax.swing.JMenu op_electores;
+    private javax.swing.JMenu op_infomesas;
+    private javax.swing.JMenu op_magistrados;
+    private javax.swing.JMenu op_miembrosmesas;
+    private javax.swing.JMenu op_papeletas;
+    private javax.swing.JMenu op_pdf;
+    private javax.swing.JMenu op_usuarios;
+    private javax.swing.JTextField tf_crearcontra;
+    private javax.swing.JFormattedTextField tf_crearid;
+    private javax.swing.JTextField tf_crearusu;
+    private javax.swing.JFormattedTextField tf_id;
+    private javax.swing.JFormattedTextField tf_mod_id;
+    private javax.swing.JTextField tf_modcontra;
+    private javax.swing.JTextField tf_modnombre;
     private javax.swing.JPasswordField tf_pass;
     // End of variables declaration//GEN-END:variables
 
-ArrayList<Usuario>usuarios= new ArrayList();
+private static ArrayList<Usuario>usuarios= new ArrayList();
+Usuario user_global;
 
 
 

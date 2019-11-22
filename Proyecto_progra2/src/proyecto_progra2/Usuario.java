@@ -1,19 +1,25 @@
 
 package proyecto_progra2;
 
+import javax.crypto.Mac;
+
 
 public class Usuario {
     String nombre;
-    int id ;
+    String id ;
     String contrasena;
+    Usuario tipo;//puede ser administrador ,magistrado, elector o miembro de mesa
+    String roll;//ifual que tipo pero para agarrarlo como string primero
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, int id, String contrasena) {
+    public Usuario( String id ,String nombre, String contrasena,String roll) {
         this.nombre = nombre;
         this.id = id;
         this.contrasena = contrasena;
+        setTipo(roll);//make final?
+        
     }
 
     public String getNombre() {
@@ -24,11 +30,11 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -40,9 +46,36 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
+    public String getRoll() {
+        return roll;
+    }
+
+    public void setRoll(String roll) {
+        this.roll = roll;
+    }
+    
+
+    public Usuario getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String roll) {
+        if (roll.equals("administrador")) {
+            this.tipo= new Administrador();
+        }else if(roll.equals("magistrado")){
+            this.tipo= new Magristrados();
+        }else if(roll.equals("elector")){
+            this.tipo= new Elector();
+        }else if (roll.equals("miembro de mesa")){
+            this.tipo= new Miembro_mesa();
+        }
+    }
+    
+
     @Override
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", id=" + id + ", contrasena=" + contrasena + '}';
+       //return "Usuario{" + "nombre=" + nombre + ", id=" + id + ", contrasena=" + contrasena + '}';
+       return nombre;
     }
     
 }
